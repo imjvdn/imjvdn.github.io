@@ -2,16 +2,1317 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Jadan Morrow | Computer Science ePortfolio</title>
 <style>
 :root{font-family:Segoe UI,Arial,sans-serif;color:#172633;background:#f5f7f9;line-height:1.6}*{box-sizing:border-box}body{margin:0}a{color:#174b73}a:focus-visible{outline:3px solid #dc9c36;outline-offset:5px}.status{background:#e4edf4;padding:10px 6%;font-size:14px}header,main,footer{max-width:1100px;margin:auto;padding:28px 40px}header{display:flex;justify-content:space-between;align-items:center}nav{display:flex;gap:24px;flex-wrap:wrap}h1{font-size:44px;line-height:1.1;margin:15px 0}h2{font-size:25px;line-height:1.3}h3{font-size:19px}p{max-width:78ch}.eyebrow{letter-spacing:.14em;font-size:12px;font-weight:700;color:#3f5d72}.hero{padding:24px 0 36px;border-bottom:1px solid #cbd5df}.lede{font-size:20px;color:#42586a}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:white;padding:24px;border:1px solid #d8e0e6;border-radius:8px}.tag{font-size:12px;color:#4d6375}.card p{font-size:15px}section{scroll-margin-top:30px;margin-bottom:38px}footer{border-top:1px solid #cbd5df;color:#506270;font-size:13px}.skip{position:absolute;left:-9999px}.skip:focus{left:20px;top:10px;background:white;padding:10px}@media(max-width:700px){header{display:block}.grid{grid-template-columns:1fr}header,main,footer{padding:22px}h1{font-size:35px}nav{gap:15px}}
-</style></head><body>
+details{margin:16px 0;padding:12px 16px;border:1px solid #cbd5df;background:white}summary{cursor:pointer;font-weight:600}pre{white-space:pre;overflow:auto;max-height:650px;font-size:14px;line-height:1.5}details p{max-width:78ch}</style></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="status">CS 499 ePortfolio · <a href="https://imjvdn.github.io/">https://imjvdn.github.io/</a></div>
-<header><strong>Jadan Morrow</strong><nav aria-label="Main navigation"><a href="#about">About</a><a href="#enhancements">Enhancements</a><a href="#review">Code review</a><a href="#reflection">Self-assessment</a></nav></header>
-<main id="main"><section class="hero" id="about"><p class="eyebrow">CS 499 · COMPUTER SCIENCE CAPSTONE</p><h1>Computer Science ePortfolio</h1><p class="lede">Full stack developer · Software design, algorithms, and databases.</p><p>I’m Jadan Morrow, a full stack developer completing my Computer Science degree at Southern New Hampshire University. I build applications across the interface, application logic, and database, with an emphasis on maintainability, security, and clear engineering decisions.</p><p>This portfolio will document the enhancement of my CS 340 Grazioso Salvare Animal Rescue Dashboard, originally developed in April 2026. The work connects application architecture, efficient candidate selection, and database engineering.</p><p><strong>Current stage:</strong> Module Four. The software design enhancement has been reviewed, and the algorithm enhancement has been implemented and tested locally. The Milestone One code review is available below.</p></section>
+<header><strong>Jadan Morrow</strong><nav aria-label="Main navigation"><a href="#about">About</a><a href="#enhancements">Enhancements</a><a href="#software-evidence">Software evidence</a><a href="#review">Code review</a><a href="#reflection">Self-assessment</a></nav></header>
+<main id="main"><section class="hero" id="about"><p class="eyebrow">CS 499 · COMPUTER SCIENCE CAPSTONE</p><h1>Computer Science ePortfolio</h1><p class="lede">Full stack developer · Software design, algorithms, and databases.</p><p>I’m Jadan Morrow, a full stack developer completing my Computer Science degree at Southern New Hampshire University. I build applications across the interface, application logic, and database, with an emphasis on maintainability, security, and clear engineering decisions.</p><p>This portfolio will document the enhancement of my CS 340 Grazioso Salvare Animal Rescue Dashboard, originally developed in April 2026. The work connects application architecture, efficient candidate selection, and database engineering.</p><p><strong>Current stage:</strong> Module Five. The software design artifact and narrative are available in this prepared portfolio update. The algorithm and database enhancements have been implemented and tested locally. The Milestone One code review is available below.</p></section>
 <section id="enhancements"><p class="eyebrow">ONE ARTIFACT · THREE CATEGORIES</p><h2>Enhancement progress</h2><div class="grid">
 <article class="card"><span class="tag">01 / SOFTWARE DESIGN AND ENGINEERING</span><h3>A standalone application</h3><p>The standalone dashboard separates presentation, service, and repository components, with configuration checks, safe error handling, and authenticated MongoDB reads.</p><p><strong>Verified:</strong> Module Three received 40/40. Its 58-test baseline includes live MongoDB checks.</p></article>
-<article class="card"><span class="tag">02 / ALGORITHMS AND DATA STRUCTURES</span><h3>Nearest candidate selection</h3><p>A nearest-candidate shortlist now uses Haversine distance and a bounded heap, with record IDs resolving distance ties. A full-sort reference checks correctness.</p><p><strong>Verified locally:</strong> 107 passing tests and repeated benchmarks with up to 100,000 synthetic records. Database performance work remains planned.</p></article>
-<article class="card"><span class="tag">03 / DATABASES</span><h3>Bounded and validated queries</h3><p>Add server-side pagination, database aggregation, schema validation, and measured index improvements.</p><p><strong>Evidence planned:</strong> query plans, integration tests, and import validation.</p></article>
+<article class="card"><span class="tag">02 / ALGORITHMS AND DATA STRUCTURES</span><h3>Nearest candidate selection</h3><p>A nearest-candidate shortlist now uses Haversine distance and a bounded heap, with record IDs resolving distance ties. A full-sort reference checks correctness.</p><p><strong>Verified locally:</strong> 107 passing tests and repeated benchmarks with up to 100,000 synthetic records. This is the recorded Module Four baseline; later database evidence is documented separately.</p></article>
+<article class="card"><span class="tag">03 / DATABASES</span><h3>Bounded and validated queries</h3><p>Server-side pagination, full-category aggregation, schema validation, and measured index selection are implemented locally.</p><p><strong>Verified locally:</strong> 160 passing tests, including 27 live MongoDB cases, plus query, payload, memory, and import evidence. Instructor review and publication remain.</p></article>
 </div></section>
+<section id="software-design"><p class="eyebrow">ENHANCEMENT ONE</p><h2>Software design and engineering</h2><p>The original notebook became a standalone application with separate presentation, service, domain, configuration, and repository components. Safe failure handling, stable record selection, and authenticated read-only database access make the behavior easier to understand and test.</p><p>The artifact includes original and enhanced source plus the 58-test software-design baseline. The narrative explains the changes and explicitly connects the evidence to course outcomes following instructor feedback.</p><p><a href="artifacts/Jadan_Morrow_CS499_Milestone_Two_Artifact.zip" download>Download original and enhanced source (ZIP)</a> · <a href="artifacts/Jadan_Morrow_CS499_Software_Design_Narrative.docx" download>Read the software design narrative (Word)</a></p><p>This source version records the software-design enhancement. Later algorithm and database changes are separate milestones. The Python dashboard runs locally; this static portfolio presents its source and evidence.</p></section>
+<section id="software-evidence"><h2>Software design narrative and source</h2><details class="artifact-detail"><summary>Read the full software design narrative</summary><h3>Software Design and Engineering Enhancement</h3><p>Jadan Morrow
+CS 499 | 3-2 Milestone Two Narrative
+September 19, 2026</p><h3>Artifact and purpose</h3><p>My artifact is the Grazioso Salvare Animal Rescue Dashboard from CS 340 Project Two, dated April 19, 2026. The original Jupyter notebook used Python, Dash, and MongoDB to filter animal records for three rescue categories, display a table and breed chart, and map a selected animal. I selected it because one working feature crosses the interface, application rules, and database. Improving those boundaries provides a meaningful way to demonstrate software design, defensive programming, and testing. This milestone implements the first enhancement from my code review plan. The ZIP includes the original code baseline and the enhanced application; the original credentials are redacted and notebook outputs are cleared. The original logic is preserved for comparison.</p><p>The enhanced application runs locally without Jupyter and includes fictional data so another reviewer can try it without the original shelter database. My instructor endorsed the planned separation of presentation, service, repository, and database responsibilities and encouraged evidence for each finding. I used those points to guide the implementation and validation. The milestone asks for an enhanced artifact and a narrative explaining its value, outcomes, and learning process (Southern New Hampshire University [SNHU], n.d.).</p><h3>Changes and design decisions</h3><p>The original dashboard callback built rescue queries, requested data, and prepared table rows in one function. The enhanced app.py handles presentation and callbacks, domain.py defines typed animal records and rescue rules, service.py handles searches and result states, and repository.py provides interchangeable data adapters. The Settings class in config.py supplies runtime configuration. The application factory accepts a repository as an argument, which is dependency injection: tests can supply controlled records or failures instead of a live database. This makes it possible to check behavior without starting MongoDB or changing production data.</p><p>I preserved the original rescue eligibility conditions, including the inclusive age boundaries, and kept the table, chart, column highlighting, and map. Unsupported rescue choices now produce a validation message instead of silently requesting all records. The table uses a permanent ID for each record, following Dash&#x27;s support for row identities (Plotly, n.d.). Sorting therefore does not change the selected animal. Changing a rescue category or refreshing clears the selection and returns to page one. If a table filter excludes the selected animal, the map asks for a current selection. This explicit behavior replaces the original use of unchecked row positions.</p><p>Location validation accepts finite numeric coordinates only within the permitted latitude and longitude ranges. Missing values stay missing, and valid zero coordinates remain usable. When an animal has invalid coordinates, its record remains visible while the map explains why a location is unavailable. Empty results clear the chart and map. Database errors become a safe message with a retry option. Application logs record the failed operation without raw driver messages, and credentials are read from the environment rather than stored in the source. Debug mode defaults to off, and the server binds to the local computer. The repository exposes only reads. A live local test also confirms that the dashboard account cannot write to the test database.</p><h3>Verification and limits</h3><p>The automated suite passes 58 tests in Python 3.12. Tests cover rescue eligibility boundaries, invalid coordinates, empty results, stable record IDs, configuration, and failure recovery. HTTP tests exercise Dash callbacks. Unit tests check MongoDB query construction and simulated errors; the live tests below check the real database. These results verify behavior, not performance.</p><p>Browser checks also confirmed that Water Rescue returns three fictional animals, selecting River displays a marker, selecting Bay displays a missing-location message, and a table filter with no matches clears both views. The README explains installation, sample mode, Mongo settings, selection rules, and verification. Seven live integration tests passed against MongoDB 8.0.28 with 14 fictional records. All four category totals matched expectations; unauthenticated reads and dashboard-account writes were rejected. Browser checks confirmed a safe error during a real database outage and recovery after restart. The original shelter dataset was not tested. The table still loads every matching record and pages in the browser. I make no claim of lower memory use or faster queries at this stage. Dash warns that DataTable will be removed in a future major release, so the tested version is pinned and that maintenance limit is documented.</p><h3>Course outcomes</h3><p>This enhancement meets my planned software design goals and provides evidence toward the Module One course outcomes. Outcome 1 is supported by my documented response to instructor feedback and interfaces that another developer can review; I am not claiming a team development exercise. Outcome 2 is supported by the README, design notes, code review, and this narrative. Outcome 4 is the main focus: a runnable application, typed records, dependency injection, repository adapters, and automated tests show practical use of computing tools. Outcome 5 is supported by controlled input handling, safe configuration, error messages, and location validation. Live tests verify the local account restriction; production security and broader permissions still need separate evaluation.</p><p>My outcome-coverage plan is unchanged. Outcome 3 remains the focus of the next enhancement. The Haversine distance calculation, bounded heap, deterministic tie handling, full-sort reference, and benchmarks are still planned. The later database work will add server-side paging, validation rules, permission checks, and measured index selection. I have not changed those goals or counted them as completed in this milestone.</p><h3>Reflection on the enhancement</h3><p>This enhancement makes the difference between a working screen and a testable design concrete. The original notebook could display results, but reproducing an empty result or database failure required the surrounding environment. An injected repository makes those cases predictable. A second lesson is that identity and position serve different purposes: a row number is useful for display, but it should not decide which animal a map represents after sorting or filtering. Writing that rule explicitly also made the error states easier to explain.</p><p>The main challenge was preserving the original rescue workflow while changing its internal structure. I kept the existing framework and query conditions, then added tests around the boundaries most likely to break. The missing original dataset was another limitation. Clearly labeled fictional records supported both sample-mode checks and live local MongoDB tests without claiming verification of the original shelter dataset. The extra modules add some overhead to a small project, but the separation gives the upcoming algorithm and database enhancements clear places to fit.</p><h3>Portfolio update: outcome evidence</h3><p>For the software-design artifact, Outcome 4 is demonstrated by the separate application, service, domain, configuration, and repository components. Repository injection lets tests exercise failures without a live database, while the authenticated integration tests confirm the actual adapter works. The 58-test baseline belongs to this software-design version; later algorithm and database work is documented separately.</p><p>Outcome 5 is demonstrated by read-only database access, private environment configuration, safe failure messages, and validation that prevents invalid locations from becoming misleading map points. Outcome 2 is demonstrated by the setup instructions, design decisions, and narrative that explain these behaviors to another developer. For Outcome 3, the artifact establishes clear data and control boundaries; the later algorithm enhancement provides the stronger time-and-space analysis. For Outcome 1, I incorporated the instructor’s request for explicit evidence mapping, while recognizing that individual work does not demonstrate team collaboration. This clarification follows the 40/40 milestone review and does not change the software-design source version. Portfolio narrative updated September 29, 2026.</p><h3>References</h3><p>Plotly. (n.d.). Sorting, filtering, selecting, and paging natively. Dash documentation. https://dash.plotly.com/datatable/interactivity</p><p>Southern New Hampshire University. (n.d.). CS 499 milestone two guidelines and rubric [Course material]. Brightspace. https://learn.snhu.edu/d2l/le/content/2377437/viewContent/52233228/View</p></details><details class="artifact-detail"><summary>Explore original and enhanced source and evidence</summary><p>These readable views are the exact files in the software-design ZIP. The original notebook is shown as code and Markdown cells with outputs removed.</p><details><summary>START_HERE.txt</summary><pre><code>CS 499 Milestone Two - Jadan Morrow
+
+original/ contains the original notebook, CRUD module, and logo, with credential redactions documented.
+enhanced/ contains the standalone application, fictional sample data, tests, pinned dependencies, and evidence.
+Start with enhanced/README.md. The Word narrative is submitted separately.
+</code></pre></details><details><summary>original/BASELINE_NOTES.md</summary><pre><code># Original artifact baseline
+
+Source: CS340_ProjectTwo_JadanMorrow_original.zip, retained privately in the local sources directory.
+
+This folder contains both original code files and the original logo. The notebook code is retained; stored outputs and execution counts are cleared. The original module&#x27;s username and password literals are replaced with REDACTED_FOR_SUBMISSION. These are the only intentional baseline changes. Credential redaction does not change the original architecture or rescue query logic, and does not rotate or revoke the historical credentials.
+
+The original Word readme is not a code file and is not reproduced here. The enhanced application has its own complete README. The untouched private archive remains available locally for provenance; do not publish it as part of the ePortfolio without reviewing its credentials and content.
+</code></pre></details><details><summary>original/CRUD_Python_Module.py</summary><pre><code>from pymongo import MongoClient
+from urllib.parse import quote_plus
+from bson.objectid import ObjectId
+
+
+class AnimalShelter(object):
+    &quot;&quot;&quot;CRUD operations for Animal collection in MongoDB&quot;&quot;&quot;
+
+    def __init__(self):
+        USER = &#x27;REDACTED_FOR_SUBMISSION&#x27;
+        PASS = quote_plus(&#x27;REDACTED_FOR_SUBMISSION&#x27;)
+        HOST = &#x27;localhost&#x27;
+        PORT = 27017
+        DB = &#x27;aac&#x27;
+        COL = &#x27;animals&#x27;
+
+        self.client = MongoClient(&#x27;mongodb://%s:%s@%s:%d&#x27; % (USER, PASS, HOST, PORT))
+        self.database = self.client[&#x27;%s&#x27; % DB]
+        self.collection = self.database[&#x27;%s&#x27; % COL]
+
+    def create(self, data):
+        if data is not None:
+            result = self.collection.insert_one(data)
+            return result.acknowledged
+        else:
+            raise Exception(&quot;Nothing to save, because data parameter is empty&quot;)
+
+    def read(self, query):
+        if query is not None:
+            data = self.collection.find(query, {&quot;_id&quot;: False})
+            return list(data)
+        else:
+            raise Exception(&quot;Nothing to read, because query parameter is empty&quot;)
+
+    def update(self, query, new_values):
+        if query is not None and new_values is not None:
+            result = self.collection.update_many(query, new_values)
+            return result.modified_count
+        else:
+            raise Exception(&quot;Nothing to update, because query or new_values parameter is empty&quot;)
+
+    def delete(self, query):
+        if query is not None:
+            result = self.collection.delete_many(query)
+            return result.deleted_count
+        else:
+            raise Exception(&quot;Nothing to delete, because query parameter is empty&quot;)</code></pre></details><details><summary>original/ProjectTwoDashboard.ipynb</summary><pre><code>[code]
+# ============================================================
+# CS-340 Project Two Dashboard
+# Author: Jadan Morrow
+# Date:   2026-04-19
+# Description: Interactive dashboard for Grazioso Salvare to
+#              filter and visualize Austin Animal Center data.
+# ============================================================
+
+# Setup the Jupyter version of Dash
+from jupyter_dash import JupyterDash
+
+# Dashboard component imports
+import dash_leaflet as dl
+from dash import dcc, html
+import plotly.express as px
+from dash import dash_table
+from dash.dependencies import Input, Output, State
+import base64
+JupyterDash.infer_jupyter_proxy_config()
+
+# Standard library / data imports
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# CRUD module (from Project One)
+from CRUD_Python_Module import AnimalShelter
+
+###########################
+# Data Manipulation / Model
+###########################
+
+# Connect to MongoDB via the CRUD module (credentials are hardcoded in the module)
+db = AnimalShelter()
+
+# Retrieve all records and load into a DataFrame
+df = pd.DataFrame.from_records(db.read({}))
+df.drop(columns=[&#x27;_id&#x27;], inplace=True, errors=&#x27;ignore&#x27;)
+
+#########################
+# Dashboard Layout / View
+#########################
+
+app = JupyterDash(__name__)
+
+# Encode the Grazioso Salvare logo for embedding in the page
+image_filename = &#x27;Grazioso Salvare Logo.png&#x27;
+encoded_image = base64.b64encode(open(image_filename, &#x27;rb&#x27;).read())
+
+app.layout = html.Div([
+
+    # ----- Header: logo + title -----
+    html.Div(
+        style={&#x27;display&#x27;: &#x27;flex&#x27;, &#x27;alignItems&#x27;: &#x27;center&#x27;, &#x27;justifyContent&#x27;: &#x27;center&#x27;,
+               &#x27;backgroundColor&#x27;: &#x27;#003366&#x27;, &#x27;padding&#x27;: &#x27;10px&#x27;},
+        children=[
+            html.Img(
+                src=&#x27;data:image/png;base64,{}&#x27;.format(encoded_image.decode()),
+                style={&#x27;height&#x27;: &#x27;80px&#x27;, &#x27;marginRight&#x27;: &#x27;20px&#x27;}
+            ),
+            html.Div([
+                html.H1(&#x27;Grazioso Salvare Animal Rescue Dashboard&#x27;,
+                        style={&#x27;color&#x27;: &#x27;white&#x27;, &#x27;margin&#x27;: &#x27;0&#x27;}),
+                html.P(&#x27;Developed by Jadan Morrow | CS-340 | 2026-04-19&#x27;,
+                       style={&#x27;color&#x27;: &#x27;#aac8ff&#x27;, &#x27;margin&#x27;: &#x27;0&#x27;, &#x27;fontSize&#x27;: &#x27;13px&#x27;})
+            ])
+        ]
+    ),
+
+    html.Hr(),
+
+    # ----- Filter controls -----
+    html.Div(
+        style={&#x27;padding&#x27;: &#x27;10px 20px&#x27;},
+        children=[
+            html.H4(&#x27;Filter by Rescue Type:&#x27;, style={&#x27;marginBottom&#x27;: &#x27;8px&#x27;}),
+            dcc.RadioItems(
+                id=&#x27;filter-type&#x27;,
+                options=[
+                    {&#x27;label&#x27;: &#x27;Water Rescue&#x27;,                    &#x27;value&#x27;: &#x27;Water Rescue&#x27;},
+                    {&#x27;label&#x27;: &#x27;Mountain or Wilderness Rescue&#x27;,   &#x27;value&#x27;: &#x27;Mountain or Wilderness Rescue&#x27;},
+                    {&#x27;label&#x27;: &#x27;Disaster or Individual Tracking&#x27;, &#x27;value&#x27;: &#x27;Disaster or Individual Tracking&#x27;},
+                    {&#x27;label&#x27;: &#x27;Reset (Show All)&#x27;,                &#x27;value&#x27;: &#x27;Reset&#x27;},
+                ],
+                value=&#x27;Reset&#x27;,
+                labelStyle={&#x27;display&#x27;: &#x27;inline-block&#x27;, &#x27;marginRight&#x27;: &#x27;25px&#x27;,
+                            &#x27;fontSize&#x27;: &#x27;15px&#x27;, &#x27;cursor&#x27;: &#x27;pointer&#x27;}
+            )
+        ]
+    ),
+
+    html.Hr(),
+
+    # ----- Interactive Data Table -----
+    dash_table.DataTable(
+        id=&#x27;datatable-id&#x27;,
+        columns=[{&#x27;name&#x27;: i, &#x27;id&#x27;: i, &#x27;deletable&#x27;: False, &#x27;selectable&#x27;: True}
+                 for i in df.columns],
+        data=df.to_dict(&#x27;records&#x27;),
+        page_size=10,
+        page_action=&#x27;native&#x27;,
+        sort_action=&#x27;native&#x27;,
+        filter_action=&#x27;native&#x27;,
+        row_selectable=&#x27;single&#x27;,
+        selected_rows=[0],
+        style_table={&#x27;overflowX&#x27;: &#x27;auto&#x27;},
+        style_header={
+            &#x27;backgroundColor&#x27;: &#x27;#003366&#x27;,
+            &#x27;color&#x27;: &#x27;white&#x27;,
+            &#x27;fontWeight&#x27;: &#x27;bold&#x27;
+        },
+        style_data_conditional=[
+            {&#x27;if&#x27;: {&#x27;row_index&#x27;: &#x27;odd&#x27;}, &#x27;backgroundColor&#x27;: &#x27;#f0f4ff&#x27;}
+        ],
+        style_cell={
+            &#x27;textAlign&#x27;: &#x27;left&#x27;,
+            &#x27;minWidth&#x27;: &#x27;80px&#x27;,
+            &#x27;maxWidth&#x27;: &#x27;200px&#x27;,
+            &#x27;overflow&#x27;: &#x27;hidden&#x27;,
+            &#x27;textOverflow&#x27;: &#x27;ellipsis&#x27;
+        }
+    ),
+
+    html.Br(),
+    html.Hr(),
+
+    # ----- Charts: pie chart (left) + geolocation map (right) -----
+    html.Div(
+        className=&#x27;row&#x27;,
+        style={&#x27;display&#x27;: &#x27;flex&#x27;},
+        children=[
+            html.Div(id=&#x27;graph-id&#x27;, className=&#x27;col s12 m6&#x27;, style={&#x27;flex&#x27;: &#x27;1&#x27;}),
+            html.Div(id=&#x27;map-id&#x27;,   className=&#x27;col s12 m6&#x27;, style={&#x27;flex&#x27;: &#x27;1&#x27;})
+        ]
+    )
+])
+
+#############################################
+# Interaction Between Components / Controller
+#############################################
+
+# ----- Filter type -&gt; breed queries -&gt; update data table -----
+@app.callback(
+    Output(&#x27;datatable-id&#x27;, &#x27;data&#x27;),
+    [Input(&#x27;filter-type&#x27;, &#x27;value&#x27;)]
+)
+def update_dashboard(filter_type):
+    if filter_type == &#x27;Water Rescue&#x27;:
+        query = {
+            &#x27;animal_type&#x27;: &#x27;Dog&#x27;,
+            &#x27;breed&#x27;: {&#x27;$in&#x27;: [&#x27;Labrador Retriever Mix&#x27;,
+                              &#x27;Chesapeake Bay Retriever&#x27;,
+                              &#x27;Newfoundland&#x27;]},
+            &#x27;sex_upon_outcome&#x27;: &#x27;Intact Female&#x27;,
+            &#x27;age_upon_outcome_in_weeks&#x27;: {&#x27;$gte&#x27;: 26, &#x27;$lte&#x27;: 156}
+        }
+    elif filter_type == &#x27;Mountain or Wilderness Rescue&#x27;:
+        query = {
+            &#x27;animal_type&#x27;: &#x27;Dog&#x27;,
+            &#x27;breed&#x27;: {&#x27;$in&#x27;: [&#x27;German Shepherd&#x27;,
+                              &#x27;Alaskan Malamute&#x27;,
+                              &#x27;Old English Sheepdog&#x27;,
+                              &#x27;Siberian Husky&#x27;,
+                              &#x27;Rottweiler&#x27;]},
+            &#x27;sex_upon_outcome&#x27;: &#x27;Intact Male&#x27;,
+            &#x27;age_upon_outcome_in_weeks&#x27;: {&#x27;$gte&#x27;: 26, &#x27;$lte&#x27;: 156}
+        }
+    elif filter_type == &#x27;Disaster or Individual Tracking&#x27;:
+        query = {
+            &#x27;animal_type&#x27;: &#x27;Dog&#x27;,
+            &#x27;breed&#x27;: {&#x27;$in&#x27;: [&#x27;Doberman Pinscher&#x27;,
+                              &#x27;German Shepherd&#x27;,
+                              &#x27;Golden Retriever&#x27;,
+                              &#x27;Bloodhound&#x27;,
+                              &#x27;Rottweiler&#x27;]},
+            &#x27;sex_upon_outcome&#x27;: &#x27;Intact Male&#x27;,
+            &#x27;age_upon_outcome_in_weeks&#x27;: {&#x27;$gte&#x27;: 20, &#x27;$lte&#x27;: 300}
+        }
+    else:  # Reset
+        query = {}
+
+    df_filtered = pd.DataFrame.from_records(db.read(query))
+    df_filtered.drop(columns=[&#x27;_id&#x27;], inplace=True, errors=&#x27;ignore&#x27;)
+    return df_filtered.to_dict(&#x27;records&#x27;)
+
+
+# ----- Highlight selected column in data table -----
+@app.callback(
+    Output(&#x27;datatable-id&#x27;, &#x27;style_data_conditional&#x27;),
+    [Input(&#x27;datatable-id&#x27;, &#x27;selected_columns&#x27;)]
+)
+def update_styles(selected_columns):
+    base = [{&#x27;if&#x27;: {&#x27;row_index&#x27;: &#x27;odd&#x27;}, &#x27;backgroundColor&#x27;: &#x27;#f0f4ff&#x27;}]
+    highlights = [
+        {&#x27;if&#x27;: {&#x27;column_id&#x27;: col}, &#x27;backgroundColor&#x27;: &#x27;#D2F3FF&#x27;}
+        for col in (selected_columns or [])
+    ]
+    return base + highlights
+
+
+# ----- Pie chart: breed distribution of currently visible data -----
+@app.callback(
+    Output(&#x27;graph-id&#x27;, &#x27;children&#x27;),
+    [Input(&#x27;datatable-id&#x27;, &#x27;derived_virtual_data&#x27;)]
+)
+def update_graphs(view_data):
+    if not view_data:
+        return []
+
+    dff = pd.DataFrame.from_dict(view_data)
+
+    breed_counts = dff[&#x27;breed&#x27;].value_counts().reset_index()
+    breed_counts.columns = [&#x27;breed&#x27;, &#x27;count&#x27;]
+    threshold = breed_counts[&#x27;count&#x27;].sum() * 0.02
+    breed_counts.loc[breed_counts[&#x27;count&#x27;] &lt; threshold, &#x27;breed&#x27;] = &#x27;Other&#x27;
+    breed_counts = breed_counts.groupby(&#x27;breed&#x27;, as_index=False).sum()
+
+    fig = px.pie(
+        breed_counts,
+        names=&#x27;breed&#x27;,
+        values=&#x27;count&#x27;,
+        title=&#x27;Breed Distribution of Filtered Animals&#x27;,
+        hole=0.3
+    )
+    fig.update_traces(textposition=&#x27;inside&#x27;, textinfo=&#x27;percent+label&#x27;)
+    fig.update_layout(margin={&#x27;t&#x27;: 50, &#x27;b&#x27;: 10, &#x27;l&#x27;: 10, &#x27;r&#x27;: 10})
+
+    return [dcc.Graph(figure=fig)]
+
+
+# ----- Geolocation map: pin for the selected row -----
+@app.callback(
+    Output(&#x27;map-id&#x27;, &#x27;children&#x27;),
+    [Input(&#x27;datatable-id&#x27;, &#x27;derived_virtual_data&#x27;),
+     Input(&#x27;datatable-id&#x27;, &#x27;derived_virtual_selected_rows&#x27;)]
+)
+def update_map(view_data, index):
+    if view_data is None:
+        return []
+
+    dff = pd.DataFrame.from_dict(view_data)
+    row = index[0] if index else 0
+
+    if &#x27;location_lat&#x27; not in dff.columns or &#x27;location_long&#x27; not in dff.columns:
+        return [html.P(&#x27;Coordinate data not available.&#x27;)]
+
+    lat   = dff.iloc[row][&#x27;location_lat&#x27;]
+    lon   = dff.iloc[row][&#x27;location_long&#x27;]
+    breed = dff.iloc[row].get(&#x27;breed&#x27;, &#x27;Unknown breed&#x27;)
+    name  = dff.iloc[row].get(&#x27;name&#x27;, &#x27;Unnamed&#x27;)
+
+    return [
+        dl.Map(
+            style={&#x27;width&#x27;: &#x27;100%&#x27;, &#x27;height&#x27;: &#x27;500px&#x27;},
+            center=[lat, lon],
+            zoom=10,
+            children=[
+                dl.TileLayer(id=&#x27;base-layer-id&#x27;),
+                dl.Marker(
+                    position=[lat, lon],
+                    children=[
+                        dl.Tooltip(breed),
+                        dl.Popup([
+                            html.H4(&#x27;Animal Name&#x27;),
+                            html.P(name)
+                        ])
+                    ]
+                )
+            ]
+        )
+    ]
+
+
+# Run the app (change port if 8050 is already in use)
+app.run_server(mode=&#x27;inline&#x27;, port=8050, debug=True)
+</code></pre></details><details><summary>enhanced/docs/DESIGN_DECISIONS.md</summary><pre><code># Design decisions and review response
+
+## Scope
+
+Module Three implements Category One of the reviewed CS 340 enhancement plan. It changes architecture, configuration, validation, error handling, testability, and documentation. It does not claim completed Category Two ranking or Category Three database optimization.
+
+## Instructor feedback
+
+The Module One feedback endorsed a presentation/service/repository separation, dependency injection, in-memory testing, a MongoDB adapter, typed records, configuration, error handling, logging, and automated tests. The Module Two journal feedback asked for test cases or controlled measurements to verify findings. The code review feedback described the planned enhancements as practical and aligned with the findings. These comments were read in Brightspace on September 19, 2026. No team review or instructor review of this new implementation is claimed.
+
+## Findings and implemented responses
+
+| Original finding | Implemented response | Evidence |
+| --- | --- | --- |
+| Notebook startup requires MongoDB and combines interface and rules | Standalone app factory, Settings, domain rules, RescueService, repository adapters | Sample-mode startup; HTTP layout and callback tests |
+| Unknown rescue value falls through to Reset | Enum validation rejects unsupported choices before repository access | Invalid-category tests, including a dictionary input |
+| Map reads unchecked row positions | Stable IDs; absent selection produces a prompt | Reordered and removed selection tests; browser selection |
+| Coordinates may be missing or invalid | Finite numeric checks and range validation before marker creation | Boundary, NaN, infinity, boolean, missing, and string tests |
+| Database failure has no clear user state | RepositoryError is mapped to safe UI text; retry reissues reads | Simulated failure followed by success; no secret in logs |
+| Credentials are embedded; debug enabled | Environment configuration; private URI repr; debug off; loopback bind | Configuration tests; observed startup with debug off |
+| No repeatable tests or complete setup instructions | Pinned dependency file, fictional data, pytest suite, README | Recorded test output and manual browser checks |
+
+## Tradeoffs
+
+Keeping Dash and its table avoids changing both the framework and architecture at once. The dependency is pinned because DataTable is deprecated for a future major Dash release. Full result loading is intentionally retained and documented; showing ten table rows does not mean MongoDB reads only ten. A read-only repository interface narrows application behavior but does not prove the database account lacks write permissions. The local fixture database now rejects a no-match write from the dashboard account. Broader production permission tests remain later work.
+
+Selection is cleared after rescue-category changes and refreshes. Table sorting uses stable IDs. Table filtering suppresses the map if the selected ID is no longer visible. These explicit rules replace the original fallback to a positional first row. Code remains independently testable, though additional files and model conversions add maintenance overhead compared with a single notebook.
+
+## Course outcomes
+
+1. Collaboration: clear boundaries and documented response to instructor feedback support future review; no fabricated teamwork claim.
+2. Communication: README, design notes, review video, and accompanying narrative explain the changes and limits.
+3. Algorithms: still planned; current boundary and chart tests do not replace the promised heap/reference comparison and benchmarks.
+4. Computing techniques and tools: standalone Dash app, dependency injection, typed model, adapters, pinned dependencies, and repeatable tests.
+5. Security mindset: safe configuration, checked inputs, valid locations, safe error messages, and no application write interface. The local read-only account is now verified; broader database permissions and deployment security remain separate work.
+</code></pre></details><details><summary>enhanced/docs/test_results.txt</summary><pre><code>..........................................................               [100%]
+============================== warnings summary ===============================
+tests/test_dashboard.py::test_callback_selection_reset_and_map_states
+tests/test_dashboard.py::test_http_layout_and_real_callback_round_trip
+tests/test_dashboard.py::test_missing_sample_file_preserves_interface
+tests/test_mongo_integration.py::test_live_http_callback_and_map
+  .venv/Lib/site-packages/dash\development\base_component.py:454: DeprecationWarning: 
+  The dash_table.DataTable will be removed from the builtin dash components in a future major version.
+  We recommend using dash-ag-grid as a replacement. Install with `pip install dash[ag-grid]`.
+  
+    warnings.warn(DeprecationWarning(textwrap.dedent(deprecation_message)))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=================================== PASSES ====================================
+___________________ test_failure_is_safe_and_retry_recovers ___________________
+------------------------------ Captured log call ------------------------------
+WARNING  rescue_dashboard.service:service.py:31 animal_search_failed category=RESET
+________________ test_missing_sample_file_preserves_interface _________________
+------------------------------ Captured log call ------------------------------
+WARNING  rescue_dashboard.app:app.py:20 data_source_initialization_failed
+WARNING  rescue_dashboard.service:service.py:31 animal_search_failed category=RESET
+=========================== short test summary info ===========================
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[below-Water Rescue-Labrador Retriever Mix-Intact Female-26-156]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[below-Mountain or Wilderness Rescue-German Shepherd-Intact Male-26-156]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[below-Disaster or Individual Tracking-Bloodhound-Intact Male-20-300]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[lower-Water Rescue-Labrador Retriever Mix-Intact Female-26-156]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[lower-Mountain or Wilderness Rescue-German Shepherd-Intact Male-26-156]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[lower-Disaster or Individual Tracking-Bloodhound-Intact Male-20-300]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[upper-Water Rescue-Labrador Retriever Mix-Intact Female-26-156]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[upper-Mountain or Wilderness Rescue-German Shepherd-Intact Male-26-156]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[upper-Disaster or Individual Tracking-Bloodhound-Intact Male-20-300]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[above-Water Rescue-Labrador Retriever Mix-Intact Female-26-156]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[above-Mountain or Wilderness Rescue-German Shepherd-Intact Male-26-156]
+PASSED tests/test_dashboard.py::test_eligibility_age_boundaries[above-Disaster or Individual Tracking-Bloodhound-Intact Male-20-300]
+PASSED tests/test_dashboard.py::test_water_rejects_wrong_attributes[changes0]
+PASSED tests/test_dashboard.py::test_water_rejects_wrong_attributes[changes1]
+PASSED tests/test_dashboard.py::test_water_rejects_wrong_attributes[changes2]
+PASSED tests/test_dashboard.py::test_water_rejects_wrong_attributes[changes3]
+PASSED tests/test_dashboard.py::test_invalid_coordinates_do_not_make_a_marker[None-0]
+PASSED tests/test_dashboard.py::test_invalid_coordinates_do_not_make_a_marker[bad-0]
+PASSED tests/test_dashboard.py::test_invalid_coordinates_do_not_make_a_marker[nan-0]
+PASSED tests/test_dashboard.py::test_invalid_coordinates_do_not_make_a_marker[0-inf]
+PASSED tests/test_dashboard.py::test_invalid_coordinates_do_not_make_a_marker[91-0]
+PASSED tests/test_dashboard.py::test_invalid_coordinates_do_not_make_a_marker[-91-0]
+PASSED tests/test_dashboard.py::test_invalid_coordinates_do_not_make_a_marker[0-181]
+PASSED tests/test_dashboard.py::test_invalid_coordinates_do_not_make_a_marker[0--181]
+PASSED tests/test_dashboard.py::test_invalid_coordinates_do_not_make_a_marker[True-0]
+PASSED tests/test_dashboard.py::test_valid_coordinates_include_zero_and_boundaries[0-0]
+PASSED tests/test_dashboard.py::test_valid_coordinates_include_zero_and_boundaries[-90--180]
+PASSED tests/test_dashboard.py::test_valid_coordinates_include_zero_and_boundaries[90-180]
+PASSED tests/test_dashboard.py::test_valid_coordinates_include_zero_and_boundaries[30.2--97.7]
+PASSED tests/test_dashboard.py::test_reset_includes_animals_not_eligible_for_rescue
+PASSED tests/test_dashboard.py::test_invalid_category_does_not_call_repository[unknown]
+PASSED tests/test_dashboard.py::test_invalid_category_does_not_call_repository[None]
+PASSED tests/test_dashboard.py::test_invalid_category_does_not_call_repository[choice2]
+PASSED tests/test_dashboard.py::test_empty_results_are_normal
+PASSED tests/test_dashboard.py::test_failure_is_safe_and_retry_recovers
+PASSED tests/test_dashboard.py::test_selection_is_id_based_after_reorder_and_cleared_if_absent
+PASSED tests/test_dashboard.py::test_identity_is_not_animal_id_or_row_position
+PASSED tests/test_dashboard.py::test_breed_chart_groups_under_two_percent_not_at_boundary
+PASSED tests/test_dashboard.py::test_settings_defaults_and_no_secret_in_repr
+PASSED tests/test_dashboard.py::test_invalid_configuration_fails_clearly[env0]
+PASSED tests/test_dashboard.py::test_invalid_configuration_fails_clearly[env1]
+PASSED tests/test_dashboard.py::test_invalid_configuration_fails_clearly[env2]
+PASSED tests/test_dashboard.py::test_invalid_configuration_fails_clearly[env3]
+PASSED tests/test_dashboard.py::test_invalid_configuration_fails_clearly[env4]
+PASSED tests/test_dashboard.py::test_invalid_configuration_fails_clearly[env5]
+PASSED tests/test_dashboard.py::test_mongo_adapter_builds_query_and_retains_id
+PASSED tests/test_dashboard.py::test_driver_failure_is_wrapped_without_credentials
+PASSED tests/test_dashboard.py::test_callback_selection_reset_and_map_states
+PASSED tests/test_dashboard.py::test_http_layout_and_real_callback_round_trip
+PASSED tests/test_dashboard.py::test_missing_sample_file_preserves_interface
+PASSED tests/test_dashboard.py::test_close_releases_database_client
+PASSED tests/test_mongo_integration.py::test_live_queries_match_sample_records[Reset-14]
+PASSED tests/test_mongo_integration.py::test_live_queries_match_sample_records[Water Rescue-3]
+PASSED tests/test_mongo_integration.py::test_live_queries_match_sample_records[Mountain or Wilderness Rescue-5]
+PASSED tests/test_mongo_integration.py::test_live_queries_match_sample_records[Disaster or Individual Tracking-5]
+PASSED tests/test_mongo_integration.py::test_live_account_denies_unauthenticated_reads_and_writes
+PASSED tests/test_mongo_integration.py::test_live_http_callback_and_map
+PASSED tests/test_mongo_integration.py::test_live_empty_collection
+58 passed, 4 warnings in 0.43s
+</code></pre></details><details><summary>enhanced/docs/VALIDATION.md</summary><pre><code># Validation record
+
+Updated: September 20, 2026. Local Windows environment, Python 3.12, dependencies pinned in requirements.txt.
+
+## Automated checks
+
+Command: `python -m pytest -q -rA`
+
+Result: 58 passed, 4 deprecation warnings, 0 failures. Full output is in test_results.txt. `python -m pip check` reported no broken requirements.
+
+The warnings identify the planned future removal of Dash&#x27;s built-in DataTable. The tested Dash 3.4.0 is pinned for this milestone. The tests cover rescue category age boundaries; eligibility attributes; coordinate bounds, missing values, booleans, infinity and NaN; Reset and empty results; validation before data access; safe failure and retry recovery; selection by ID after reordering or filtering; duplicate and missing IDs; chart grouping; environment configuration; Mongo query construction and exception wrapping; callback view states; an actual HTTP callback request; missing sample files; and client cleanup.
+
+## Browser observations
+
+The application started with debug off at 127.0.0.1:8050. The running local app was inspected in a browser.
+
+- Reset initially reported 14 fictional animals.
+- Water Rescue reported 3: River, Harbor, and Bay, including the inclusive age endpoints 26 and 156.
+- Selecting River rendered a location heading, a map marker, and visible map tiles, alongside the breed chart.
+- Selecting Bay, whose sample coordinates are missing, replaced the map with an explanatory message.
+- Filtering the Name column to ZZZ produced zero visible rows and cleared both chart and map.
+
+## Limits
+
+The original shelter dataset was not used. Live integration and read-only access were verified only in the isolated local fixture database described below; this is not a production security assessment. No performance benchmarks, ranking feature, server-side paging, database schema rules, or index experiments are claimed. The sample set is intentionally small and fictional; its behavior is not evidence of real-world rescue suitability or production capacity. Browser checks complement the unit and HTTP tests but are not a complete accessibility audit.
+
+## Live MongoDB verification — September 20, 2026
+
+MongoDB Community 8.0.28 was installed from the official Windows ZIP; SHA-256 matched the publisher checksum. It runs separately from the existing MongoDB installation, bound to 127.0.0.1:27018, with authentication enabled. The aac.animals collection contains the 14 included fictional records. The dashboard uses an account with only the read role on aac. Local account secrets are Windows-encrypted outside the workspace and are not in this archive.
+
+The seven opt-in tests in tests/test_mongo_integration.py passed against the real server: four rescue categories (Reset 14, Water 3, Mountain 5, Disaster 5), authentication/write rejection, a real Dash HTTP callback plus chart/map states, and an empty collection. A no-match update with upsert disabled returned authorization code 13; an unauthenticated read also returned code 13. These tests use no mock database driver. All 58 tests passed in one run with the live test connection configured.
+
+Browser verification in MongoDB mode confirmed 14 initial records, Water Rescue returning 3 records, and River&#x27;s map marker. Gracefully stopping this isolated MongoDB instance and clicking Retry produced the safe failure message and empty views. After restarting the instance, Retry restored all 3 Water Rescue records without restarting the dashboard. The old MongoDB service was not changed.
+
+To repeat the live suite, use the setup in README.md and set CS499_TEST_MONGODB_URI privately. Without that variable, the seven live tests are explicitly skipped. The test fixture expects aac.animals and a nonexistent/empty aac.empty_fixture collection on the local port 27018. The original 51 tests continue to run without MongoDB.
+</code></pre></details><details><summary>enhanced/README.md</summary><pre><code># Grazioso Salvare Animal Rescue Dashboard
+
+Jadan Morrow — CS 499 Milestone Two, Software Design and Engineering.
+
+This standalone Python application enhances the April 19, 2026 CS 340 notebook. It preserves the three rescue filters, reset, sortable/filterable table, breed chart, column highlighting, and selected-animal map. The first enhancement separates responsibilities and makes failure behavior testable. This is a local educational application, not a production deployment.
+
+## Run with the included sample data
+
+Requires Python 3.12. From this `enhanced` directory:
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m rescue_dashboard.app
+```
+
+Open http://127.0.0.1:8050. Stop with Ctrl+C. On macOS/Linux use `python3.12 -m venv .venv` and `.venv/bin/python` for the remaining commands. All pinned dependencies, including the test runner, are in `requirements.txt`. Internet access is needed for installation and map tiles, but not for sample filtering or automated tests after installation.
+
+The 14 records in `data/sample_animals.json` are fictional, locally authored examples. They are not the original Austin Animal Center dataset. Some intentionally have missing or out-of-range coordinates. Expected rescue totals are Water 3, Mountain 5, Disaster 5, and Reset 14; categories can overlap. These tiny fixtures do not establish production performance or suitability of a real animal for rescue training.
+
+## Use your MongoDB environment
+
+In the same terminal, set `RESCUE_DATA_SOURCE` to `mongo`, `MONGODB_URI` privately to your connection string, and optionally `MONGODB_DATABASE` and `MONGODB_COLLECTION` (defaults `aac` and `animals`). Launch with the same command. Use a MongoDB account restricted to reading the required collection. Local integration verification used MongoDB 8.0.28 with authentication and a read-only account; see docs/VALIDATION.md. Configure permissions separately for your own database.
+
+Mongo records require `_id`; `animal_id` is a display identifier and may repeat across outcome records. Expected fields are `name`, `animal_type`, `breed`, `sex_upon_outcome`, numeric `age_upon_outcome_in_weeks`, and optional numeric `location_lat` and `location_long`. Coordinates must be finite and within latitude [-90, 90] and longitude [-180, 180]. Missing locations remain missing. Numeric coordinate strings are accepted by the presentation model. Mongo eligibility queries expect numeric ages in storage. The later database enhancement will address import validation and schema enforcement.
+
+The `.env.example` file documents settings; the application does not automatically load `.env`. `RESCUE_PORT` defaults to 8050; change it if occupied. The server binds only to 127.0.0.1. Debug is off unless `RESCUE_DEBUG=true` is explicitly set for local development. Invalid settings produce a safe startup message. After changing settings or repairing a missing sample file, restart the application. A transient MongoDB read failure can be retried with the Retry / Refresh button.
+
+## Design and behavior
+
+```text
+Browser controls
+    -&gt; app.py callbacks (presentation)
+    -&gt; RescueService (validation, result and error states)
+    -&gt; AnimalRepository protocol
+        -&gt; InMemoryRepository (fictional records)
+        -&gt; MongoRepository (fixed read queries)
+
+domain.py: typed Animal records, rescue rules, coordinates, and identity
+config.py: environment settings and safe defaults
+```
+
+The factory accepts an injected repository, so tests can simulate results and failures without a live database. The enhanced application exposes no update or delete methods. Mongo connection details are excluded from configuration representations, UI error messages, and application error logs. It does not log raw driver exceptions.
+
+Each row has a permanent `id` derived from Mongo `_id` or the sample `_id`. Selection uses that identity, not a row offset. Sorting does not change which animal is selected. Changing category or refreshing clears selection and returns to page one. A selected animal excluded by a table filter produces a selection prompt instead of showing another animal; restoring the filter may restore that ID&#x27;s selection. Empty results clear both chart and map. Invalid locations retain the row but replace the map with an explanation. Coordinates (0, 0) are valid and are not treated as missing.
+
+The chart represents all rows remaining after the browser&#x27;s table filters, across pages. Breeds under 2% are grouped as Other. Table paging remains client-side, with 10 rows displayed per page; all matching results are still loaded. No performance gain is claimed. Haversine ranking, bounded heaps, server-side pagination, database schema rules, permission verification, and measured index selection are reserved for later enhancements.
+
+## Verify
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
+See `docs/VALIDATION.md` and `docs/test_results.txt` for the actual run and limits. Tests cover rescue boundaries, invalid inputs, stable identity, chart grouping, safe failure and retry, configuration, adapter behavior, and an HTTP callback. The original driver unit tests use mocks. Seven additional opt-in tests passed against a real local MongoDB installation with fictional records; they skip unless CS499_TEST_MONGODB_URI is configured. Dash 3.4.0 emits a deprecation warning for its built-in DataTable. It is retained and pinned to preserve the original interface within this milestone; a future Dash major-version upgrade will require evaluating its replacement.
+
+## Source and review references
+
+- Plotly. DataTable interactivity and stable row IDs: https://dash.plotly.com/datatable/interactivity
+- Plotly. DataTable reference: https://dash.plotly.com/datatable/reference
+- The original project and credential-redaction notes are in the sibling `original` directory.
+- `docs/DESIGN_DECISIONS.md` connects the review findings and instructor feedback to this implementation.
+
+## Repeat the optional live MongoDB tests
+
+1. Install MongoDB Community and start an isolated instance bound to 127.0.0.1:27018 with authorization enabled. Create a setup administrator using MongoDB&#x27;s localhost exception during initial provisioning. Do not reuse a production database.
+2. Create a separate user on aac with only the built-in read role for aac. Keep administrator and dashboard credentials separate.
+3. Set MONGODB_SETUP_URI privately to the setup account&#x27;s authenticated URI. From this directory run `python tools/seed_mongo.py` using the installed virtual environment. It imports data/sample_animals.json only into an empty collection and refuses to overwrite existing data. Remove MONGODB_SETUP_URI after seeding.
+4. Set RESCUE_DATA_SOURCE=mongo and MONGODB_URI privately to the read-only account URI, with authSource=aac. The defaults are MONGODB_DATABASE=aac and MONGODB_COLLECTION=animals. Launch `python -m rescue_dashboard.app` using the virtual environment.
+5. Set CS499_TEST_MONGODB_URI to that same read-only URI and run `python -m pytest -q -rA`. The fixture tests expect exactly the 14 included records, plus an empty or nonexistent aac.empty_fixture collection. The unauthenticated-read probe targets 127.0.0.1:27018. No passwords or actual authenticated connection strings are included in this submission.
+
+MongoDB setup references: https://www.mongodb.com/docs/v8.0/tutorial/install-mongodb-on-windows-zip/ and https://www.mongodb.com/docs/manual/reference/built-in-roles/.
+</code></pre></details><details><summary>enhanced/requirements.txt</summary><pre><code>annotated-types==0.8.0
+blinker==1.9.0
+cachelib==0.17.0
+certifi==2026.7.22
+charset-normalizer==3.5.1
+click==8.5.0
+colorama==0.4.6
+colorcet==3.2.1
+dash==3.4.0
+dash-extensions==2.0.6
+dash-leaflet==1.1.3
+dash-svg==0.0.12
+dataclass-wizard==1.0.0
+dnspython==2.8.0
+EditorConfig==0.17.1
+Flask==3.1.3
+Flask-Caching==2.5.1
+geobuf==2.0.1
+idna==3.20
+importlib_metadata==9.0.1
+iniconfig==2.3.0
+itsdangerous==2.2.0
+Jinja2==3.1.6
+jsbeautifier==2.0.3
+MarkupSafe==3.0.3
+more-itertools==11.1.0
+narwhals==2.26.0
+nest-asyncio==1.6.0
+packaging==26.3
+plotly==7.1.0
+pluggy==1.6.0
+protobuf==7.36.2
+pydantic==2.13.5
+pydantic_core==2.46.5
+Pygments==2.21.0
+pymongo==4.18.1
+pytest==9.1.1
+PyYAML==6.0.3
+requests==2.34.2
+retrying==1.4.2
+setuptools==84.0.0
+six==1.17.0
+typing-inspection==0.4.4
+typing_extensions==4.16.0
+urllib3==2.8.0
+Werkzeug==3.1.8
+zipp==4.1.0
+</code></pre></details><details><summary>enhanced/rescue_dashboard/__init__.py</summary><pre><code>&quot;&quot;&quot;Grazioso Salvare dashboard, CS 499 software design enhancement.&quot;&quot;&quot;
+</code></pre></details><details><summary>enhanced/rescue_dashboard/app.py</summary><pre><code>&quot;&quot;&quot;Standalone Dash UI. Callbacks translate between the UI and application service.&quot;&quot;&quot;
+import atexit
+import logging
+from pathlib import Path
+from dash import Dash, Input, Output, State, dcc, html, dash_table
+import dash_leaflet as dl
+from .config import Settings
+from .domain import Animal, Category, ValidationError
+from .repository import InMemoryRepository, MongoRepository, RepositoryError, UnavailableRepository
+from .service import RescueService, breed_counts, selected_animal
+
+
+def create_app(settings=None, repository=None):
+    settings = settings or Settings.from_environment()
+    if repository is None:
+        try:
+            repository = (MongoRepository.connect(settings) if settings.source == &#x27;mongo&#x27;
+                          else InMemoryRepository.from_file(settings.sample_path))
+        except RepositoryError:
+            logging.getLogger(__name__).warning(&#x27;data_source_initialization_failed&#x27;)
+            repository = UnavailableRepository()
+    service = RescueService(repository)
+    atexit.register(repository.close)
+    app = Dash(__name__, assets_folder=str(Path(__file__).resolve().parents[1] / &#x27;assets&#x27;))
+    app.title = &#x27;Grazioso Salvare Rescue Dashboard&#x27;
+    columns = [(&#x27;Animal ID&#x27;, &#x27;animal_id&#x27;), (&#x27;Name&#x27;, &#x27;name&#x27;), (&#x27;Type&#x27;, &#x27;animal_type&#x27;),
+               (&#x27;Breed&#x27;, &#x27;breed&#x27;), (&#x27;Sex&#x27;, &#x27;sex_upon_outcome&#x27;),
+               (&#x27;Age in weeks&#x27;, &#x27;age_upon_outcome_in_weeks&#x27;)]
+    app.layout = html.Main([
+        html.Header([html.Img(src=&#x27;/assets/logo.png&#x27;, alt=&#x27;Grazioso Salvare logo&#x27;),
+                     html.Div([html.H1(&#x27;Grazioso Salvare&#x27;), html.P(&#x27;Animal rescue dashboard&#x27;)])]),
+        html.P(&#x27;Sample mode — fictional records for demonstration and testing.&#x27;
+               if settings.source == &#x27;sample&#x27; else &#x27;MongoDB mode — database-backed records.&#x27;,
+               className=&#x27;source-label&#x27;),
+        html.Section([
+            html.H2(&#x27;Find rescue candidates&#x27;),
+            dcc.RadioItems(id=&#x27;category&#x27;, options=[{&#x27;label&#x27;: &#x27;Reset (Show All)&#x27; if c == Category.RESET
+                          else c.value, &#x27;value&#x27;: c.value} for c in Category], value=Category.RESET.value,
+                          labelStyle={&#x27;display&#x27;: &#x27;inline-block&#x27;, &#x27;marginRight&#x27;: &#x27;1.5rem&#x27;}),
+            html.Button(&#x27;Retry / Refresh&#x27;, id=&#x27;retry&#x27;, n_clicks=0),
+            dcc.Loading(html.P(id=&#x27;status&#x27;, role=&#x27;status&#x27;, **{&#x27;aria-live&#x27;: &#x27;polite&#x27;})),
+            html.P(&#x27;Filter or sort the table to explore results. Changing rescue category or refreshing clears the selection.&#x27;),
+            dash_table.DataTable(id=&#x27;animals&#x27;, columns=[{&#x27;name&#x27;: name, &#x27;id&#x27;: key, &#x27;selectable&#x27;: True}
+                 for name, key in columns], data=[], page_action=&#x27;native&#x27;, page_size=10,
+                 sort_action=&#x27;native&#x27;, filter_action=&#x27;native&#x27;, row_selectable=&#x27;single&#x27;,
+                 selected_rows=[], selected_row_ids=[], column_selectable=&#x27;multi&#x27;, selected_columns=[],
+                 style_table={&#x27;overflowX&#x27;: &#x27;auto&#x27;}, style_cell={&#x27;textAlign&#x27;: &#x27;left&#x27;, &#x27;padding&#x27;: &#x27;12px&#x27;,
+                 &#x27;fontFamily&#x27;: &#x27;Arial&#x27;, &#x27;whiteSpace&#x27;: &#x27;normal&#x27;, &#x27;height&#x27;: &#x27;auto&#x27;},
+                 style_header={&#x27;backgroundColor&#x27;: &#x27;#e7eef5&#x27;, &#x27;fontWeight&#x27;: &#x27;bold&#x27;}),
+        ]),
+        html.Section([html.Div(id=&#x27;chart&#x27;, className=&#x27;panel&#x27;),
+                      html.Div(id=&#x27;map&#x27;, className=&#x27;panel&#x27;)], className=&#x27;views&#x27;),
+        html.Footer(&#x27;Jadan Morrow | CS 499 | Software Design and Engineering&#x27;)
+    ])
+
+    @app.callback(Output(&#x27;animals&#x27;, &#x27;data&#x27;), Output(&#x27;status&#x27;, &#x27;children&#x27;),
+                  Output(&#x27;animals&#x27;, &#x27;selected_rows&#x27;), Output(&#x27;animals&#x27;, &#x27;selected_row_ids&#x27;),
+                  Output(&#x27;animals&#x27;, &#x27;page_current&#x27;),
+                  Input(&#x27;category&#x27;, &#x27;value&#x27;), Input(&#x27;retry&#x27;, &#x27;n_clicks&#x27;))
+    def load_animals(category, _retry):
+        result = service.search(category)
+        return [animal.to_row() for animal in result.animals], result.message, [], [], 0
+
+    @app.callback(Output(&#x27;chart&#x27;, &#x27;children&#x27;), Output(&#x27;map&#x27;, &#x27;children&#x27;),
+                  Input(&#x27;animals&#x27;, &#x27;derived_virtual_data&#x27;), Input(&#x27;animals&#x27;, &#x27;selected_row_ids&#x27;),
+                  Input(&#x27;animals&#x27;, &#x27;data&#x27;))
+    def update_views(view_rows, selected_ids, source_rows):
+        rows = source_rows if view_rows is None else view_rows
+        try:
+            animals = [Animal.from_document(row) for row in (rows or [])]
+        except (ValidationError, TypeError, AttributeError):
+            return html.P(&#x27;Record data is invalid. Select Retry.&#x27;), html.P(&#x27;Location unavailable.&#x27;)
+        if not animals:
+            return html.P(&#x27;No animals to chart.&#x27;), html.P(&#x27;No animal location to display.&#x27;)
+        counts = breed_counts(animals)
+        chart = dcc.Graph(figure={&#x27;data&#x27;: [{&#x27;type&#x27;: &#x27;pie&#x27;, &#x27;labels&#x27;: list(counts),
+                         &#x27;values&#x27;: list(counts.values()), &#x27;hole&#x27;: .3}],
+                         &#x27;layout&#x27;: {&#x27;title&#x27;: {&#x27;text&#x27;: &#x27;Breeds in all table-filtered results&#x27;},
+                                    &#x27;margin&#x27;: {&#x27;t&#x27;: 50, &#x27;b&#x27;: 20, &#x27;l&#x27;: 20, &#x27;r&#x27;: 20}}})
+        animal = selected_animal(animals, selected_ids)
+        if animal is None:
+            return chart, html.P(&#x27;Select an animal in the current results to view its location.&#x27;)
+        if animal.coordinates is None:
+            return chart, html.P(f&#x27;Location unavailable for {animal.name}: coordinates are missing or invalid.&#x27;)
+        location = list(animal.coordinates)
+        map_view = html.Div([html.H2(f&#x27;Location for {animal.name}&#x27;),
+                    dl.Map(center=location, zoom=10, style={&#x27;height&#x27;: &#x27;370px&#x27;, &#x27;width&#x27;: &#x27;100%&#x27;},
+                           children=[dl.TileLayer(attribution=&#x27;&amp;copy; &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors&#x27;), dl.Marker(position=location,
+                             children=[dl.Tooltip(animal.breed), dl.Popup(animal.name)])]),
+                    html.P(&#x27;Map tiles require internet access. Location is the recorded shelter location.&#x27;)])
+        return chart, map_view
+
+    allowed_columns = {key for _, key in columns}
+
+    @app.callback(Output(&#x27;animals&#x27;, &#x27;style_data_conditional&#x27;), Input(&#x27;animals&#x27;, &#x27;selected_columns&#x27;))
+    def highlight_columns(columns):
+        return [{&#x27;if&#x27;: {&#x27;row_index&#x27;: &#x27;odd&#x27;}, &#x27;backgroundColor&#x27;: &#x27;#f5f8fc&#x27;}] + [
+            {&#x27;if&#x27;: {&#x27;column_id&#x27;: key}, &#x27;backgroundColor&#x27;: &#x27;#d2f3ff&#x27;}
+            for key in (columns or []) if key in allowed_columns]
+
+    # Expose the application boundary for direct callback tests without a running browser.
+    app.rescue_callbacks = {&#x27;load&#x27;: load_animals, &#x27;views&#x27;: update_views, &#x27;highlight&#x27;: highlight_columns}
+    app.rescue_repository = repository
+    return app
+
+
+def main():
+    logging.basicConfig(level=logging.INFO, format=&#x27;%(levelname)s %(name)s %(message)s&#x27;)
+    # The Mongo driver can emit topology details at DEBUG; keep it quiet.
+    logging.getLogger(&#x27;pymongo&#x27;).setLevel(logging.WARNING)
+    try:
+        settings = Settings.from_environment()
+    except ValidationError as error:
+        raise SystemExit(str(error)) from None
+    app = create_app(settings)
+    try:
+        app.run(host=settings.host, port=settings.port, debug=settings.debug)
+    finally:
+        app.rescue_repository.close()
+
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre></details><details><summary>enhanced/rescue_dashboard/config.py</summary><pre><code>&quot;&quot;&quot;Runtime configuration. No stored credentials and no debug-by-default server.&quot;&quot;&quot;
+from dataclasses import dataclass, field
+from pathlib import Path
+import os
+from .domain import ValidationError
+
+
+@dataclass(frozen=True)
+class Settings:
+    source: str = &#x27;sample&#x27;
+    mongo_uri: str = field(default=&#x27;&#x27;, repr=False)
+    database: str = &#x27;aac&#x27;
+    collection: str = &#x27;animals&#x27;
+    sample_path: Path = Path(__file__).resolve().parents[1] / &#x27;data&#x27; / &#x27;sample_animals.json&#x27;
+    host: str = &#x27;127.0.0.1&#x27;
+    port: int = 8050
+    debug: bool = False
+
+    @classmethod
+    def from_environment(cls, env=None):
+        env = os.environ if env is None else env
+        source = env.get(&#x27;RESCUE_DATA_SOURCE&#x27;, &#x27;sample&#x27;)
+        if source not in (&#x27;sample&#x27;, &#x27;mongo&#x27;):
+            raise ValidationError(&#x27;RESCUE_DATA_SOURCE must be sample or mongo.&#x27;)
+        uri = env.get(&#x27;MONGODB_URI&#x27;, &#x27;&#x27;)
+        if source == &#x27;mongo&#x27; and not uri.startswith((&#x27;mongodb://&#x27;, &#x27;mongodb+srv://&#x27;)):
+            raise ValidationError(&#x27;Set MONGODB_URI to a MongoDB connection URI.&#x27;)
+        try:
+            port = int(env.get(&#x27;RESCUE_PORT&#x27;, &#x27;8050&#x27;))
+        except (ValueError, TypeError):
+            raise ValidationError(&#x27;RESCUE_PORT must be an integer from 1 to 65535.&#x27;) from None
+        if not 1 &lt;= port &lt;= 65535:
+            raise ValidationError(&#x27;RESCUE_PORT must be an integer from 1 to 65535.&#x27;)
+        debug = env.get(&#x27;RESCUE_DEBUG&#x27;, &#x27;false&#x27;).lower()
+        if debug not in (&#x27;true&#x27;, &#x27;false&#x27;):
+            raise ValidationError(&#x27;RESCUE_DEBUG must be true or false.&#x27;)
+        return cls(source=source, mongo_uri=uri, database=env.get(&#x27;MONGODB_DATABASE&#x27;, &#x27;aac&#x27;),
+                   collection=env.get(&#x27;MONGODB_COLLECTION&#x27;, &#x27;animals&#x27;), port=port,
+                   debug=debug == &#x27;true&#x27;)
+</code></pre></details><details><summary>enhanced/rescue_dashboard/domain.py</summary><pre><code>&quot;&quot;&quot;Typed records and the original rescue eligibility rules, independent of Dash.&quot;&quot;&quot;
+from dataclasses import dataclass
+from enum import Enum
+from math import isfinite
+from typing import Mapping
+
+
+class ValidationError(ValueError):
+    &quot;&quot;&quot;A user choice or record violates a documented application rule.&quot;&quot;&quot;
+
+
+class Category(str, Enum):
+    RESET = &#x27;Reset&#x27;
+    WATER = &#x27;Water Rescue&#x27;
+    MOUNTAIN = &#x27;Mountain or Wilderness Rescue&#x27;
+    DISASTER = &#x27;Disaster or Individual Tracking&#x27;
+
+    @classmethod
+    def parse(cls, value):
+        try:
+            return cls(value)
+        except (ValueError, TypeError):
+            raise ValidationError(&#x27;Choose one of the listed rescue categories.&#x27;) from None
+
+
+@dataclass(frozen=True)
+class RescueRule:
+    breeds: tuple[str, ...]
+    sex: str
+    minimum_age: float
+    maximum_age: float
+
+
+RULES = {
+    Category.WATER: RescueRule((&#x27;Labrador Retriever Mix&#x27;, &#x27;Chesapeake Bay Retriever&#x27;,
+                               &#x27;Newfoundland&#x27;), &#x27;Intact Female&#x27;, 26, 156),
+    Category.MOUNTAIN: RescueRule((&#x27;German Shepherd&#x27;, &#x27;Alaskan Malamute&#x27;,
+                                  &#x27;Old English Sheepdog&#x27;, &#x27;Siberian Husky&#x27;,
+                                  &#x27;Rottweiler&#x27;), &#x27;Intact Male&#x27;, 26, 156),
+    Category.DISASTER: RescueRule((&#x27;Doberman Pinscher&#x27;, &#x27;German Shepherd&#x27;,
+                                  &#x27;Golden Retriever&#x27;, &#x27;Bloodhound&#x27;, &#x27;Rottweiler&#x27;),
+                                 &#x27;Intact Male&#x27;, 20, 300),
+}
+
+
+def finite_number(value):
+    # Do not turn missing values or booleans into a legitimate zero coordinate.
+    if isinstance(value, bool) or value is None:
+        return None
+    try:
+        number = float(value)
+    except (ValueError, TypeError, OverflowError):
+        return None
+    return number if isfinite(number) else None
+
+
+def text(value, default=&#x27;Unknown&#x27;):
+    return str(value).strip()[:200] if value is not None and str(value).strip() else default
+
+
+@dataclass(frozen=True)
+class Animal:
+    record_id: str
+    animal_id: str
+    name: str
+    animal_type: str
+    breed: str
+    sex: str
+    age_weeks: float | None
+    latitude: float | None
+    longitude: float | None
+
+    @classmethod
+    def from_document(cls, data: Mapping):
+        raw_id = data.get(&#x27;_id&#x27;)
+        if raw_id is None:
+            raw_id = data.get(&#x27;id&#x27;)
+        if raw_id is None or not str(raw_id).strip():
+            raise ValidationError(&#x27;A record is missing its permanent record ID.&#x27;)
+        return cls(str(raw_id), text(data.get(&#x27;animal_id&#x27;)), text(data.get(&#x27;name&#x27;), &#x27;Unnamed&#x27;),
+                   text(data.get(&#x27;animal_type&#x27;)), text(data.get(&#x27;breed&#x27;)),
+                   text(data.get(&#x27;sex_upon_outcome&#x27;)),
+                   finite_number(data.get(&#x27;age_upon_outcome_in_weeks&#x27;)),
+                   finite_number(data.get(&#x27;location_lat&#x27;)), finite_number(data.get(&#x27;location_long&#x27;)))
+
+    @property
+    def coordinates(self):
+        if self.latitude is None or self.longitude is None:
+            return None
+        if not (-90 &lt;= self.latitude &lt;= 90 and -180 &lt;= self.longitude &lt;= 180):
+            return None
+        return (self.latitude, self.longitude)
+
+    def to_row(self):
+        return {&#x27;id&#x27;: self.record_id, &#x27;animal_id&#x27;: self.animal_id, &#x27;name&#x27;: self.name,
+                &#x27;animal_type&#x27;: self.animal_type, &#x27;breed&#x27;: self.breed,
+                &#x27;sex_upon_outcome&#x27;: self.sex, &#x27;age_upon_outcome_in_weeks&#x27;: self.age_weeks,
+                &#x27;location_lat&#x27;: self.latitude, &#x27;location_long&#x27;: self.longitude}
+
+
+def eligible(animal: Animal, category: Category):
+    if category == Category.RESET:
+        return True
+    rule = RULES[category]
+    return (animal.animal_type == &#x27;Dog&#x27; and animal.breed in rule.breeds
+            and animal.sex == rule.sex and animal.age_weeks is not None
+            and rule.minimum_age &lt;= animal.age_weeks &lt;= rule.maximum_age)
+
+
+def rescue_query(category: Category):
+    &quot;&quot;&quot;Construct queries from an enum, never from a user-supplied dictionary.&quot;&quot;&quot;
+    if category == Category.RESET:
+        return {}
+    rule = RULES[category]
+    return {&#x27;animal_type&#x27;: &#x27;Dog&#x27;, &#x27;breed&#x27;: {&#x27;$in&#x27;: list(rule.breeds)},
+            &#x27;sex_upon_outcome&#x27;: rule.sex,
+            &#x27;age_upon_outcome_in_weeks&#x27;: {&#x27;$gte&#x27;: rule.minimum_age, &#x27;$lte&#x27;: rule.maximum_age}}
+</code></pre></details><details><summary>enhanced/rescue_dashboard/repository.py</summary><pre><code>&quot;&quot;&quot;Read-only repository interface and interchangeable data adapters.&quot;&quot;&quot;
+from typing import Protocol
+import json
+from pymongo import MongoClient
+from pymongo.errors import PyMongoError
+from .domain import Animal, Category, ValidationError, eligible, rescue_query
+
+
+class RepositoryError(RuntimeError):
+    pass
+
+
+class AnimalRepository(Protocol):
+    def find(self, category: Category) -&gt; list[Animal]: ...
+    def close(self) -&gt; None: ...
+
+
+def normalize(documents):
+    animals = [Animal.from_document(doc) for doc in documents]
+    ids = [animal.record_id for animal in animals]
+    if len(set(ids)) != len(ids):
+        raise ValidationError(&#x27;Record IDs must be unique.&#x27;)
+    return animals
+
+
+class InMemoryRepository:
+    def __init__(self, animals):
+        self._animals = tuple(animals)
+
+    @classmethod
+    def from_file(cls, path):
+        try:
+            return cls(normalize(json.loads(path.read_text(encoding=&#x27;utf-8&#x27;))))
+        except (OSError, ValueError, TypeError, AttributeError):
+            raise RepositoryError(&#x27;Sample records could not be loaded.&#x27;) from None
+
+    def find(self, category):
+        return [a for a in self._animals if eligible(a, category)]
+
+    def close(self):
+        pass
+
+
+class MongoRepository:
+    def __init__(self, collection, client=None):
+        self._collection = collection
+        self._client = client
+
+    @classmethod
+    def connect(cls, settings):
+        try:
+            client = MongoClient(settings.mongo_uri, serverSelectionTimeoutMS=2000,
+                                 connectTimeoutMS=2000, socketTimeoutMS=2000)
+            return cls(client[settings.database][settings.collection], client)
+        except (PyMongoError, ValueError, TypeError):
+            raise RepositoryError(&#x27;Database configuration could not be used.&#x27;) from None
+
+    def find(self, category):
+        # Milestone Two preserves full result loading. Server-side paging is future work.
+        projection = {key: 1 for key in (&#x27;_id&#x27;, &#x27;animal_id&#x27;, &#x27;name&#x27;, &#x27;animal_type&#x27;, &#x27;breed&#x27;,
+                      &#x27;sex_upon_outcome&#x27;, &#x27;age_upon_outcome_in_weeks&#x27;, &#x27;location_lat&#x27;, &#x27;location_long&#x27;)}
+        try:
+            with self._collection.find(rescue_query(category), projection) as cursor:
+                return normalize(cursor)
+        except (PyMongoError, ValidationError, TypeError, AttributeError):
+            raise RepositoryError(&#x27;Database records could not be loaded.&#x27;) from None
+
+    def close(self):
+        if self._client is not None:
+            self._client.close()
+
+
+class UnavailableRepository:
+    &quot;&quot;&quot;Keeps the interface available when local sample configuration is invalid.&quot;&quot;&quot;
+    def find(self, category):
+        raise RepositoryError(&#x27;Data source unavailable.&#x27;)
+
+    def close(self):
+        pass
+</code></pre></details><details><summary>enhanced/rescue_dashboard/service.py</summary><pre><code>&quot;&quot;&quot;Application behavior with no Dash, HTML, or MongoDB client dependency.&quot;&quot;&quot;
+from collections import Counter
+from dataclasses import dataclass
+import logging
+from .domain import Animal, Category, ValidationError
+from .repository import AnimalRepository, RepositoryError
+
+logger = logging.getLogger(__name__)
+
+
+@dataclass(frozen=True)
+class SearchResult:
+    animals: tuple[Animal, ...]
+    message: str
+    failed: bool = False
+
+
+class RescueService:
+    def __init__(self, repository: AnimalRepository):
+        self.repository = repository
+
+    def search(self, choice):
+        try:
+            category = Category.parse(choice)
+        except ValidationError as error:
+            return SearchResult((), str(error), True)
+        try:
+            animals = tuple(self.repository.find(category))
+        except RepositoryError:
+            # Never log exception text: driver errors can contain hosts or credentials.
+            logger.warning(&#x27;animal_search_failed category=%s&#x27;, category.name)
+            return SearchResult((), &#x27;Unable to load animals. Check the data source and select Retry.&#x27;, True)
+        if not animals:
+            return SearchResult((), &#x27;No animals match this rescue category.&#x27;)
+        return SearchResult(animals, f&#x27;{len(animals)} animals loaded. Select a row to show its location.&#x27;)
+
+
+def selected_animal(animals, selected_ids):
+    if not isinstance(selected_ids, list) or len(selected_ids) != 1:
+        return None
+    selected_id = selected_ids[0]
+    return next((a for a in animals if a.record_id == selected_id), None)
+
+
+def breed_counts(animals):
+    counts = Counter(a.breed for a in animals)
+    total = sum(counts.values())
+    grouped = Counter()
+    for breed, count in counts.items():
+        grouped[&#x27;Other&#x27; if count &lt; total * .02 else breed] += count
+    return dict(sorted(grouped.items()))
+</code></pre></details><details><summary>enhanced/tests/test_dashboard.py</summary><pre><code>from dataclasses import replace
+import json
+from unittest.mock import MagicMock
+import pytest
+from pymongo.errors import ServerSelectionTimeoutError
+from rescue_dashboard.domain import Animal, Category, ValidationError, eligible, rescue_query
+from rescue_dashboard.config import Settings
+from rescue_dashboard.repository import InMemoryRepository, MongoRepository, RepositoryError, normalize
+from rescue_dashboard.service import RescueService, selected_animal, breed_counts
+from rescue_dashboard.app import create_app
+
+
+def record(**changes):
+    data = {&#x27;_id&#x27;: &#x27;r1&#x27;, &#x27;animal_id&#x27;: &#x27;A1&#x27;, &#x27;name&#x27;: &#x27;River&#x27;, &#x27;animal_type&#x27;: &#x27;Dog&#x27;,
+            &#x27;breed&#x27;: &#x27;Labrador Retriever Mix&#x27;, &#x27;sex_upon_outcome&#x27;: &#x27;Intact Female&#x27;,
+            &#x27;age_upon_outcome_in_weeks&#x27;: 26, &#x27;location_lat&#x27;: 30.27, &#x27;location_long&#x27;: -97.74}
+    data.update(changes)
+    return Animal.from_document(data)
+
+
+@pytest.mark.parametrize(&#x27;category,breed,sex,lower,upper&#x27;, [
+    (Category.WATER, &#x27;Labrador Retriever Mix&#x27;, &#x27;Intact Female&#x27;, 26, 156),
+    (Category.MOUNTAIN, &#x27;German Shepherd&#x27;, &#x27;Intact Male&#x27;, 26, 156),
+    (Category.DISASTER, &#x27;Bloodhound&#x27;, &#x27;Intact Male&#x27;, 20, 300)])
+@pytest.mark.parametrize(&#x27;position&#x27;, [&#x27;below&#x27;, &#x27;lower&#x27;, &#x27;upper&#x27;, &#x27;above&#x27;])
+def test_eligibility_age_boundaries(category, breed, sex, lower, upper, position):
+    age = {&#x27;below&#x27;: lower-.1, &#x27;lower&#x27;: lower, &#x27;upper&#x27;: upper, &#x27;above&#x27;: upper+.1}[position]
+    animal = record(breed=breed, sex_upon_outcome=sex, age_upon_outcome_in_weeks=age)
+    assert eligible(animal, category) == (position in (&#x27;lower&#x27;, &#x27;upper&#x27;))
+
+
+@pytest.mark.parametrize(&#x27;changes&#x27;, [ {&#x27;animal_type&#x27;: &#x27;Cat&#x27;}, {&#x27;breed&#x27;: &#x27;Poodle&#x27;},
+    {&#x27;sex_upon_outcome&#x27;: &#x27;Intact Male&#x27;}, {&#x27;age_upon_outcome_in_weeks&#x27;: None}])
+def test_water_rejects_wrong_attributes(changes):
+    assert not eligible(record(**changes), Category.WATER)
+
+
+@pytest.mark.parametrize(&#x27;lat,lon&#x27;, [(None, 0), (&#x27;bad&#x27;, 0), (float(&#x27;nan&#x27;), 0),
+    (0, float(&#x27;inf&#x27;)), (91, 0), (-91, 0), (0, 181), (0, -181), (True, 0)])
+def test_invalid_coordinates_do_not_make_a_marker(lat, lon):
+    assert record(location_lat=lat, location_long=lon).coordinates is None
+
+
+@pytest.mark.parametrize(&#x27;lat,lon&#x27;, [(0, 0), (-90, -180), (90, 180), (&#x27;30.2&#x27;, &#x27;-97.7&#x27;)])
+def test_valid_coordinates_include_zero_and_boundaries(lat, lon):
+    assert record(location_lat=lat, location_long=lon).coordinates == (float(lat), float(lon))
+
+
+def test_reset_includes_animals_not_eligible_for_rescue():
+    animals = [record(), record(_id=&#x27;r2&#x27;, animal_type=&#x27;Cat&#x27;)]
+    assert RescueService(InMemoryRepository(animals)).search(&#x27;Reset&#x27;).animals == tuple(animals)
+
+
+@pytest.mark.parametrize(&#x27;choice&#x27;, [&#x27;unknown&#x27;, None, {&#x27;$where&#x27;: &#x27;anything&#x27;}])
+def test_invalid_category_does_not_call_repository(choice):
+    repo = MagicMock()
+    result = RescueService(repo).search(choice)
+    assert result.failed and result.animals == ()
+    repo.find.assert_not_called()
+
+
+def test_empty_results_are_normal():
+    result = RescueService(InMemoryRepository([])).search(&#x27;Reset&#x27;)
+    assert not result.failed and result.animals == () and &#x27;No animals&#x27; in result.message
+
+
+def test_failure_is_safe_and_retry_recovers(caplog):
+    repo = MagicMock()
+    repo.find.side_effect = [RepositoryError(&#x27;SECRET credential and host&#x27;), [record()]]
+    service = RescueService(repo)
+    failure = service.search(&#x27;Reset&#x27;)
+    assert failure.failed and not failure.animals and &#x27;Retry&#x27; in failure.message
+    assert &#x27;SECRET&#x27; not in failure.message + caplog.text
+    assert len(service.search(&#x27;Reset&#x27;).animals) == 1
+
+
+def test_selection_is_id_based_after_reorder_and_cleared_if_absent():
+    first, second = record(), record(_id=&#x27;r2&#x27;, name=&#x27;Peak&#x27;)
+    assert selected_animal([second, first], [&#x27;r1&#x27;]) is first
+    assert selected_animal([second], [&#x27;r1&#x27;]) is None
+    assert selected_animal([], [&#x27;r1&#x27;]) is None
+    assert selected_animal([first], [-1]) is None
+
+
+def test_identity_is_not_animal_id_or_row_position():
+    # Outcome records may share an animal_id; Mongo _id remains the unique identity.
+    animals = normalize([record().to_row(), record(_id=&#x27;r2&#x27;).to_row()])
+    assert animals[0].animal_id == animals[1].animal_id
+    assert animals[0].record_id != animals[1].record_id
+    with pytest.raises(ValidationError):
+        normalize([record().to_row(), record().to_row()])
+    with pytest.raises(ValidationError):
+        Animal.from_document({&#x27;animal_id&#x27;: &#x27;A1&#x27;})
+
+
+def test_breed_chart_groups_under_two_percent_not_at_boundary():
+    animals = [record(_id=str(i), breed=&#x27;Common&#x27;) for i in range(97)]
+    animals += [record(_id=&#x27;97&#x27;, breed=&#x27;Rare&#x27;), record(_id=&#x27;98&#x27;, breed=&#x27;Two&#x27;), record(_id=&#x27;99&#x27;, breed=&#x27;Two&#x27;)]
+    assert breed_counts(animals) == {&#x27;Common&#x27;: 97, &#x27;Other&#x27;: 1, &#x27;Two&#x27;: 2}
+    assert breed_counts([]) == {}
+
+
+def test_settings_defaults_and_no_secret_in_repr():
+    settings = Settings.from_environment({})
+    assert not settings.debug and settings.host == &#x27;127.0.0.1&#x27; and settings.source == &#x27;sample&#x27;
+    assert &#x27;SECRET&#x27; not in repr(replace(settings, mongo_uri=&#x27;mongodb://user:SECRET@localhost&#x27;))
+
+
+@pytest.mark.parametrize(&#x27;env&#x27;, [{&#x27;RESCUE_DATA_SOURCE&#x27;: &#x27;other&#x27;}, {&#x27;RESCUE_DATA_SOURCE&#x27;: &#x27;mongo&#x27;},
+    {&#x27;RESCUE_PORT&#x27;: &#x27;x&#x27;}, {&#x27;RESCUE_PORT&#x27;: &#x27;0&#x27;}, {&#x27;RESCUE_PORT&#x27;: &#x27;65536&#x27;}, {&#x27;RESCUE_DEBUG&#x27;: &#x27;maybe&#x27;}])
+def test_invalid_configuration_fails_clearly(env):
+    with pytest.raises(ValidationError):
+        Settings.from_environment(env)
+
+
+def test_mongo_adapter_builds_query_and_retains_id():
+    collection = MagicMock()
+    cursor = collection.find.return_value.__enter__.return_value
+    cursor.__iter__.return_value = iter([record().to_row()])
+    result = MongoRepository(collection).find(Category.WATER)
+    query, projection = collection.find.call_args.args
+    assert query == {&#x27;animal_type&#x27;: &#x27;Dog&#x27;, &#x27;breed&#x27;: {&#x27;$in&#x27;: [&#x27;Labrador Retriever Mix&#x27;,
+        &#x27;Chesapeake Bay Retriever&#x27;, &#x27;Newfoundland&#x27;]}, &#x27;sex_upon_outcome&#x27;: &#x27;Intact Female&#x27;,
+        &#x27;age_upon_outcome_in_weeks&#x27;: {&#x27;$gte&#x27;: 26, &#x27;$lte&#x27;: 156}}
+    assert projection[&#x27;_id&#x27;] == 1 and result[0].record_id == &#x27;r1&#x27;
+
+
+def test_driver_failure_is_wrapped_without_credentials():
+    collection = MagicMock()
+    collection.find.side_effect = ServerSelectionTimeoutError(&#x27;SECRET uri&#x27;)
+    with pytest.raises(RepositoryError) as error:
+        MongoRepository(collection).find(Category.RESET)
+    assert &#x27;SECRET&#x27; not in str(error.value)
+
+
+def test_callback_selection_reset_and_map_states():
+    app = create_app(repository=InMemoryRepository([record(), record(_id=&#x27;r2&#x27;, location_lat=None)]))
+    rows, message, selected_rows, selected_ids, page = app.rescue_callbacks[&#x27;load&#x27;](&#x27;Reset&#x27;, 0)
+    assert len(rows) == 2 and selected_rows == selected_ids == [] and page == 0
+    views = app.rescue_callbacks[&#x27;views&#x27;]
+    _, map_view = views(rows, [&#x27;r1&#x27;], rows)
+    assert &#x27;Location for River&#x27; in json.dumps(map_view, default=lambda x: x.to_plotly_json())
+    _, invalid = views(rows, [&#x27;r2&#x27;], rows)
+    assert &#x27;missing or invalid&#x27; in invalid.children
+    _, stale = views([rows[1]], [&#x27;r1&#x27;], rows)
+    assert &#x27;Select an animal&#x27; in stale.children
+    chart, empty_map = views([], [&#x27;r1&#x27;], rows)
+    assert chart.children == &#x27;No animals to chart.&#x27;
+    assert empty_map.children == &#x27;No animal location to display.&#x27;
+
+
+def test_http_layout_and_real_callback_round_trip():
+    app = create_app(repository=InMemoryRepository([record()]))
+    client = app.server.test_client()
+    assert client.get(&#x27;/&#x27;).status_code == 200
+    assert client.get(&#x27;/_dash-layout&#x27;).status_code == 200
+    output = next(key for key in app.callback_map if &#x27;animals.data&#x27; in key)
+    response = client.post(&#x27;/_dash-update-component&#x27;, json={
+        &#x27;output&#x27;: output, &#x27;outputs&#x27;: [{&#x27;id&#x27;: &#x27;animals&#x27;, &#x27;property&#x27;: &#x27;data&#x27;},
+            {&#x27;id&#x27;: &#x27;status&#x27;, &#x27;property&#x27;: &#x27;children&#x27;}, {&#x27;id&#x27;: &#x27;animals&#x27;, &#x27;property&#x27;: &#x27;selected_rows&#x27;},
+            {&#x27;id&#x27;: &#x27;animals&#x27;, &#x27;property&#x27;: &#x27;selected_row_ids&#x27;}, {&#x27;id&#x27;: &#x27;animals&#x27;, &#x27;property&#x27;: &#x27;page_current&#x27;}],
+        &#x27;inputs&#x27;: [{&#x27;id&#x27;: &#x27;category&#x27;, &#x27;property&#x27;: &#x27;value&#x27;, &#x27;value&#x27;: &#x27;Water Rescue&#x27;},
+                   {&#x27;id&#x27;: &#x27;retry&#x27;, &#x27;property&#x27;: &#x27;n_clicks&#x27;, &#x27;value&#x27;: 0}],
+        &#x27;state&#x27;: [], &#x27;changedPropIds&#x27;: [&#x27;category.value&#x27;]})
+    assert response.status_code == 200
+    assert response.json[&#x27;response&#x27;][&#x27;animals&#x27;][&#x27;data&#x27;][0][&#x27;id&#x27;] == &#x27;r1&#x27;
+
+
+def test_missing_sample_file_preserves_interface(tmp_path):
+    app = create_app(Settings(sample_path=tmp_path/&#x27;missing.json&#x27;))
+    assert app.server.test_client().get(&#x27;/_dash-layout&#x27;).status_code == 200
+    rows, message, *_ = app.rescue_callbacks[&#x27;load&#x27;](&#x27;Reset&#x27;, 0)
+    assert rows == [] and &#x27;Unable to load&#x27; in message
+
+
+def test_close_releases_database_client():
+    client = MagicMock()
+    MongoRepository(MagicMock(), client).close()
+    client.close.assert_called_once()
+</code></pre></details><details><summary>enhanced/tests/test_mongo_integration.py</summary><pre><code>&quot;&quot;&quot;Opt-in tests against a real MongoDB instance seeded with data/sample_animals.json.
+
+Set CS499_TEST_MONGODB_URI privately to a read-only account for that fixture database.
+The write-permission probe uses an impossible filter and upsert=False; it cannot alter data.
+&quot;&quot;&quot;
+import json
+import os
+from dataclasses import replace
+import pytest
+from pymongo import MongoClient
+from pymongo.errors import OperationFailure
+from rescue_dashboard.config import Settings
+from rescue_dashboard.domain import Category
+from rescue_dashboard.repository import MongoRepository, InMemoryRepository
+from rescue_dashboard.app import create_app
+
+pytestmark = pytest.mark.skipif(not os.environ.get(&#x27;CS499_TEST_MONGODB_URI&#x27;),
+                                reason=&#x27;A live fixture database was not configured.&#x27;)
+
+@pytest.fixture
+def settings():
+    return Settings(source=&#x27;mongo&#x27;, mongo_uri=os.environ[&#x27;CS499_TEST_MONGODB_URI&#x27;])
+
+@pytest.mark.parametrize(&#x27;category,count&#x27;, [(Category.RESET,14), (Category.WATER,3),
+    (Category.MOUNTAIN,5), (Category.DISASTER,5)])
+def test_live_queries_match_sample_records(settings, category, count):
+    repo = MongoRepository.connect(settings)
+    try:
+        actual = repo.find(category)
+        expected = InMemoryRepository.from_file(settings.sample_path).find(category)
+        assert len(actual) == count
+        assert {a.record_id for a in actual} == {a.record_id for a in expected}
+    finally:
+        repo.close()
+
+def test_live_account_denies_unauthenticated_reads_and_writes(settings):
+    with MongoClient(settings.mongo_uri) as client:
+        db = client[settings.database]
+        assert db[settings.collection].count_documents({}) == 14
+        with pytest.raises(OperationFailure) as error:
+            db[settings.collection].update_one({&#x27;_id&#x27;: {&#x27;$exists&#x27;: False}},
+                {&#x27;$set&#x27;: {&#x27;permission_probe&#x27;: True}}, upsert=False)
+        assert error.value.code == 13
+    with MongoClient(&#x27;mongodb://127.0.0.1:27018/&#x27;, serverSelectionTimeoutMS=2000) as client:
+        with pytest.raises(OperationFailure) as error:
+            client[settings.database][settings.collection].find_one({})
+        assert error.value.code == 13
+
+def test_live_http_callback_and_map(settings):
+    app = create_app(settings)
+    try:
+        client = app.server.test_client()
+        output = next(key for key in app.callback_map if &#x27;animals.data&#x27; in key)
+        response = client.post(&#x27;/_dash-update-component&#x27;, json={
+            &#x27;output&#x27;: output, &#x27;outputs&#x27;: [{&#x27;id&#x27;:&#x27;animals&#x27;,&#x27;property&#x27;:p} for p in [&#x27;data&#x27;]]
+              + [{&#x27;id&#x27;:&#x27;status&#x27;,&#x27;property&#x27;:&#x27;children&#x27;}]
+              + [{&#x27;id&#x27;:&#x27;animals&#x27;,&#x27;property&#x27;:p} for p in [&#x27;selected_rows&#x27;,&#x27;selected_row_ids&#x27;,&#x27;page_current&#x27;]],
+            &#x27;inputs&#x27;:[{&#x27;id&#x27;:&#x27;category&#x27;,&#x27;property&#x27;:&#x27;value&#x27;,&#x27;value&#x27;:&#x27;Water Rescue&#x27;},
+                      {&#x27;id&#x27;:&#x27;retry&#x27;,&#x27;property&#x27;:&#x27;n_clicks&#x27;,&#x27;value&#x27;:0}],
+            &#x27;state&#x27;:[], &#x27;changedPropIds&#x27;:[&#x27;category.value&#x27;]})
+        assert response.status_code == 200
+        rows = response.json[&#x27;response&#x27;][&#x27;animals&#x27;][&#x27;data&#x27;]
+        assert len(rows) == 3
+        river = next(row for row in rows if row[&#x27;name&#x27;] == &#x27;River&#x27;)
+        chart, location = app.rescue_callbacks[&#x27;views&#x27;](rows,[river[&#x27;id&#x27;]],rows)
+        assert sum(chart.figure[&#x27;data&#x27;][0][&#x27;values&#x27;]) == 3
+        assert &#x27;Location for River&#x27; in json.dumps(location, default=lambda x:x.to_plotly_json())
+        bay = next(row for row in rows if row[&#x27;name&#x27;] == &#x27;Bay&#x27;)
+        _, location = app.rescue_callbacks[&#x27;views&#x27;](rows,[bay[&#x27;id&#x27;]],rows)
+        assert &#x27;missing or invalid&#x27; in location.children
+    finally:
+        app.rescue_repository.close()
+
+def test_live_empty_collection(settings):
+    repo = MongoRepository.connect(replace(settings, collection=&#x27;empty_fixture&#x27;))
+    try:
+        assert repo.find(Category.RESET) == []
+    finally:
+        repo.close()
+</code></pre></details><details><summary>enhanced/tools/seed_mongo.py</summary><pre><code>&quot;&quot;&quot;Seed an EMPTY local test collection with the included fictional records.
+
+Use a separate setup account: set MONGODB_SETUP_URI privately in the environment.
+The dashboard should use its own read-only account via MONGODB_URI.
+&quot;&quot;&quot;
+import json
+import os
+from pathlib import Path
+from pymongo import MongoClient
+
+def main():
+    uri = os.environ.get(&#x27;MONGODB_SETUP_URI&#x27;)
+    if not uri:
+        raise SystemExit(&#x27;Set MONGODB_SETUP_URI privately to a setup account connection string.&#x27;)
+    records = json.loads((Path(__file__).resolve().parents[1]/&#x27;data/sample_animals.json&#x27;).read_text())
+    with MongoClient(uri, serverSelectionTimeoutMS=5000) as client:
+        collection = client[os.environ.get(&#x27;MONGODB_DATABASE&#x27;,&#x27;aac&#x27;)][os.environ.get(&#x27;MONGODB_COLLECTION&#x27;,&#x27;animals&#x27;)]
+        if collection.count_documents({}):
+            raise SystemExit(&#x27;Collection is not empty; no records were changed.&#x27;)
+        collection.insert_many(records)
+        print(&#x27;Imported 14 fictional test records.&#x27;)
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre></details></details></section>
 <section id="review"><p class="eyebrow">MILESTONE ONE</p><h2>Code review and artifact history</h2>
 <p>This narrated review examines the original CS 340 dashboard and the planned enhancements in software design, algorithms, and databases. It is a review of the original code and plans, rather than a demonstration of the later completed enhancements.</p>
 <video controls preload="metadata" style="display:block;width:100%;background:#172633" aria-label="Jadan Morrow CS499 code review">
